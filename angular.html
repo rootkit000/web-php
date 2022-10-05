@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<!-- the scripts-->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<script>
+        /*     app.controller('myCtrl',function($scope){
+        
+        
+        $scope.firstName='LEONARDO';
+        $scope.lastName='FERNANDEZ';
+        });
+        */
+         var app = angular.module('myApp',[]);
+/* An angular Js directive    
+    app.directive("tesDirective", function() {
+            return  {
+             template : "i was made a directive"
+             };
+*/
+     app.controller("myCtrl", function($scope){
+
+$scope.firstName='Leonardo';
+$scope.lastName='Fernandez';    
+     });
+     
+        </script>
+<body>
+
+        <div ng-app="myApp" ng-controller="myCtrl">
+    
+    
+
+    <h1 ng-bind="name"></h1>
+
+    <input type="text" ng-model="firstName"/>
+
+    <div ng-app="myApp" tes-directive></div>
+
+    <h1>{{firstName + " " + lastName}}</h1>
+</div>
+</body>
+</html>
