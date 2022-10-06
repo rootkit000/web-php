@@ -144,12 +144,44 @@ font-size: 100%;
    <b>Nivel de privilegios</b>
 
 
-<select name="type" id="cod" class="form-control form-control-sm"  >
+<div class="input-group mb-3">
+  <label class="input-group-text" for="inputGroupSelect02">Tipo de cuenta</label>
+<select name="type" id="cod" class="form-select"  id="inputGroupSelect02">
   <?php  if($_SESSION['rol']==1){ echo '<option value="1">Administrador</option>';}?>
   <option value="3">Profesor</option>
   <option value="2">Estudiante</option>
 </select>
+</div>
    <br>
+
+
+
+
+
+<div class="input-group mb-3">
+  <label class="input-group-text" for="inputGroupSelect01">Carrera</label>
+  <select name="carrera" class="form-select" id="inputGroupSelect01">
+  <option value="0">Ninguna</option>
+<?php
+
+
+        $codeprivileges=mysqli_query($mysqli,"SELECT id, carrera, coste_incrip ,  coste_semes FROM carrera ");
+
+
+while($fila=mysqli_fetch_row($codeprivileges))
+{
+
+
+   echo '<option value="'.$fila[0].'">'.$fila[1].'</option>';
+
+
+}
+
+
+
+?>
+  </select>
+</div>
 
 <ul>
     <li>Adminstrador</li>

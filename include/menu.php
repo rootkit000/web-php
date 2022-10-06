@@ -33,7 +33,7 @@ if (@!$_SESSION['user']){echo "href='index2.php'";}else{echo "href='profile.php'
    {
 echo "<li><a class='dropdown-item' href='index2.php'>Iniciar sesion</a></li>";
 
-echo '<li ><a class="dropdown-item" href=".php">MAS</a></li><li><a class="dropdown-item"  href="desconectar.php"Cerrar sesion <span class="icon icon-switch"></span> </a></li>';
+echo '<li ><a class="dropdown-item" href="inscribirse.php">Incribirse</a></li><li><a class="dropdown-item"  href="desconectar.php"Cerrar sesion <span class="icon icon-switch"></span> </a></li>';
    }
 
 if ($_SESSION)

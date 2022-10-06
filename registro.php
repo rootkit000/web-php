@@ -28,12 +28,15 @@ $create_table=mysqli_query($mysqli,'CREATE TABLE "$mail" ');
 //la variable  $mysqli viene de connect_db que lo traigo con el require("connect_db.php");
 
 
-				$codeprivileges=mysqli_query($mysqli,"SELECT type FROM cod_act WHERE code='$rcode'  AND status='1' ");
+				$codeprivileges=mysqli_query($mysqli,"SELECT type,carrera FROM cod_act WHERE code='$rcode'  AND status='1' ");
 
 
 while($fila=mysqli_fetch_row($codeprivileges))
 {
   $privileges=$fila['0'];
+  $carrera_inscrip=$fila['1'];
+
+
 }
 
 
@@ -61,7 +64,7 @@ while($fila=mysqli_fetch_row($codeprivileges))
 
 				mysqli_query($mysqli,"UPDATE cod_act SET status = '2' WHERE code = '$rcode' AND status='1' ");
 
-				mysqli_query($mysqli,"INSERT INTO login (email,passadmin,user,rol,password,img,lastname,cedula) VALUES('$mail','','$mail','$privileges','$pass','user2.png','nick','$ci')");
+				mysqli_query($mysqli,"INSERT INTO login (email,passadmin,user,rol,password,img,lastname,cedula,carrera) VALUES('$mail','','$mail','$privileges','$pass','user2.png','nick','$ci','$carrera_inscrip')");
 
 				//echo 'Se ha registrado con exito';
 						echo "<script>window.alert('Usuario Creado exitosamente'); window.location='index2.php';</script>";

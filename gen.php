@@ -4,6 +4,7 @@
 <?php
 
 	$type=$_POST['type'];
+	$carrera=$_POST['carrera'];
 
 	require("connect_db.php");
 
