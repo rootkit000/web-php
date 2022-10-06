@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 05-10-2022 a las 21:35:06
+-- Tiempo de generación: 06-10-2022 a las 23:13:02
 -- Versión del servidor: 5.7.36
 -- Versión de PHP: 7.4.26
 
@@ -73,6 +73,29 @@ INSERT INTO `app_info` (`id`, `nombre`, `img`, `description`, `footer`, `aboutus
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `carrera`
+--
+
+DROP TABLE IF EXISTS `carrera`;
+CREATE TABLE IF NOT EXISTS `carrera` (
+  `id` int(255) NOT NULL AUTO_INCREMENT,
+  `carrera` varchar(255) NOT NULL,
+  `coste_incrip` int(11) NOT NULL,
+  `coste_semes` int(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `carrera`
+--
+
+INSERT INTO `carrera` (`id`, `carrera`, `coste_incrip`, `coste_semes`) VALUES
+(1, 'informatica', 30, 40),
+(2, 'administracion', 30, 20);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `cod_act`
 --
 
@@ -82,8 +105,19 @@ CREATE TABLE IF NOT EXISTS `cod_act` (
   `status` int(255) NOT NULL,
   `code` int(255) DEFAULT NULL,
   `type` int(255) NOT NULL DEFAULT '2',
+  `carerra` int(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `cod_act`
+--
+
+INSERT INTO `cod_act` (`id`, `status`, `code`, `type`, `carerra`) VALUES
+(36, 1, 67, 1, 0),
+(37, 1, 37, 3, NULL),
+(38, 1, 38, 1, NULL),
+(39, 1, 39, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -130,6 +164,7 @@ CREATE TABLE IF NOT EXISTS `login` (
   `img` varchar(255) NOT NULL DEFAULT 'user.png',
   `lastname` varchar(255) NOT NULL,
   `cedula` int(255) NOT NULL,
+  `carrera` int(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
 
@@ -137,10 +172,56 @@ CREATE TABLE IF NOT EXISTS `login` (
 -- Volcado de datos para la tabla `login`
 --
 
-INSERT INTO `login` (`id`, `email`, `passadmin`, `user`, `rol`, `password`, `img`, `lastname`, `cedula`) VALUES
-(3, 'admin@admin.com', 'admin', 'admin', '1', 'admin', 'meme.png', 'admion', 0),
-(4, 'user@user.com', '', 'user@user.com', '2', 'Contraseña0', 'pet4.png', 'nick', 0),
-(32, 'profesor@gmail.com', '', 'profesor@gmail.com', '3', 'Profesor0', 'user2.png', 'nick', 9989);
+INSERT INTO `login` (`id`, `email`, `passadmin`, `user`, `rol`, `password`, `img`, `lastname`, `cedula`, `carrera`) VALUES
+(3, 'admin@admin.com', 'admin', 'admin', '1', 'admin', 'meme.png', 'admion', 0, 0),
+(4, 'user@user.com', '', 'user@user.com', '2', 'Contraseña0', 'pet4.png', 'nick', 0, 0),
+(32, 'profesor@gmail.com', '', 'profesor@gmail.com', '3', 'Profesor0', 'user2.png', 'nick', 9989, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `materias`
+--
+
+DROP TABLE IF EXISTS `materias`;
+CREATE TABLE IF NOT EXISTS `materias` (
+  `id` int(255) NOT NULL AUTO_INCREMENT,
+  `materia` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `materias`
+--
+
+INSERT INTO `materias` (`id`, `materia`) VALUES
+(1, 'programacion'),
+(2, 'matematica');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `semestres`
+--
+
+DROP TABLE IF EXISTS `semestres`;
+CREATE TABLE IF NOT EXISTS `semestres` (
+  `id` int(255) NOT NULL AUTO_INCREMENT,
+  `num` int(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `semestres`
+--
+
+INSERT INTO `semestres` (`id`, `num`) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5),
+(6, 6);
 
 -- --------------------------------------------------------
 
